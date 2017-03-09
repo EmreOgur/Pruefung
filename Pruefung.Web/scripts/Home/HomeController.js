@@ -20,4 +20,5 @@
             $http.post(urls.SaveMessage, JSON.stringify($scope.NewMessage))
             .then(function() { loadMessages(); });
         };
+
     });

@@ -9,5 +9,10 @@ namespace Pruefung.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Admin()
+        {
+            return RedirectToAction("Index","Admin");
+        }
     }
 }
