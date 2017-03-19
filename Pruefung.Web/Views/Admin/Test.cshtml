@@ -1,0 +1,81 @@
+﻿
+<div ng-app="AdminModule">
+    <div ng-controller="ModalDemoCtrl as $ctrl" class="modal-demo">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">New user's information</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <form id="myForm" name="myForm" ng-controller="AdminController" ng-submit="submit()">
+                    <label>
+                        Solutation
+                        <select ng-model="newUser.Solutation" ng-options="y for y in Greetings" required>
+                            <option></option>
+                        </select>
+                    </label>
+                    <br />
+                    <label>
+                        First name
+                        <input type="text" ng-model="newUser.FirstName" required>
+                    </label>
+                    <br />
+                    <label>
+                        Last name
+                        <input type="text" ng-model="newUser.LastName" required>
+                    </label>
+                    <br />
+                    <label>
+                        Gender
+                        <select ng-model="newUser.Gender" ng-options="x for x in Genders" required>
+                            <option></option>
+                        </select>
+                    </label>
+                    <input type="submit" id="submit" value="Submit" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+                <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+            </div>
+        </script>
+        <b>All Users:</b>
+        <table>
+            <tr>
+                <th style="text-align:center">
+                    <b>No</b>
+                </th>
+                <th style="text-align:center">
+                    <b>First Name</b>
+                </th>
+                <th style="text-align:center">
+                    <b>Last Name</b>
+                </th>
+                <th style="text-align:center">
+                    <b>Gender</b>
+                </th>
+            </tr>
+            <tr ng-if="Count!=0" ng-repeat="user in Users">
+                <td>{{user.ID}}</td>
+                <td>{{user.FirstName}}</td>
+                <td>{{user.LastName}}</td>
+                <td>{{user.Gender}}</td>
+            </tr>
+        </table>
+        @*<script type="text/ng-template" id="stackedModal.html">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title-{{name}}">The {{name}} modal!</h3>
+            </div>
+            <div class="modal-body" id="modal-body-{{name}}">
+                Having multiple modals open at once is probably bad UX but it's technically possible.
+            </div>
+        </script>*@
+        <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Add a user</button>
+        <div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>
+        <div class="modal-parent">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/Admin/TestController.js"></script>
+}

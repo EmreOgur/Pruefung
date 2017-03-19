@@ -1,4 +1,6 @@
-﻿namespace Pruefung.Web
+﻿using System.Collections.Generic;
+
+namespace Pruefung.Web
 {
     public static class Scripts
     {
@@ -8,12 +10,12 @@
 #if DEBUG
             JQuery = "~/Scripts/jquery-3.1.1.js";
             Bootstrap = "~/Scripts/bootstrap.js";
-            Angular = "~/Scripts/angular.js";
+            Angular = new[] { "~/Scripts/angular.js", "~/Scripts/angular-animate.js", "~/Scripts/angular-sanitize.js" };
             AngularUI = "~/Scripts/angular-ui/ui-bootstrap.js";
 #else
             JQuery = "~/Scripts/jquery-3.1.1.min.js";
             Bootstrap = "~/Scripts/bootstrap.min.js";
-            Angular = "~/Scripts/angular.min.js";
+            Angular = new[] { "~/Scripts/angular.min.js", "~/Scripts/angular-animate.min.js","~/Scripts/angular-sanitize.min.js" };
             AngularUI = "~/Scripts/angular-ui/ui-bootstrap.js";
 #endif
         }
@@ -21,7 +23,7 @@
         public static string JQuery { get; private set; }
         public static string Bootstrap { get; private set; }
         public static string Modernizr { get; private set; }
-        public static string Angular { get; private set; }
+        public static IReadOnlyCollection<string> Angular { get; private set; }
         public static string AngularUI { get; private set; }
     }
 

@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - On-line testing system</title>
     <link href="@Url.Content(Styles.Site)" rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Styles.Bootstrap)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Styles.BootstrapUI)" rel="stylesheet" type="text/css" />
+
     <script src="@Url.Content(Scripts.Modernizr)"></script>
 </head>
 <body>
@@ -20,8 +22,7 @@
                 @Html.ActionLink("Pruefung", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>
@@ -35,7 +36,10 @@
     </div>
 
     <script src="@Url.Content(Scripts.JQuery)"></script>
-    <script src="@Url.Content(Scripts.Angular)"></script>
+    @foreach (var s in Scripts.Angular)
+    {
+        <script src="@Url.Content(s)"></script>
+    }
     <script src="@Url.Content(Scripts.Bootstrap)"></script>
     <script src="@Url.Content(Scripts.AngularUI)"></script>
     @RenderSection("Scripts", false)

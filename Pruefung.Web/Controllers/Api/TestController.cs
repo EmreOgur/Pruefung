@@ -19,7 +19,6 @@ namespace Pruefung.Web.Controllers.Api
         public IHttpActionResult AddMessage([FromBody]string message)
         {
             _testService.SaveMessage(message);
-
             return Ok();
         }
 
